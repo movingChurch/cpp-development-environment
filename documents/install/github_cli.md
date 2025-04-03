@@ -57,7 +57,7 @@ gh --version
 
 출력 예시:
 
-```
+```bash
 gh version 2.39.1 (2024-01-10)
 https://github.com/cli/cli/releases/latest
 ```

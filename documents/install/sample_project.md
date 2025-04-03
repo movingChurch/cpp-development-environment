@@ -115,31 +115,6 @@ cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
 
 ---
 
-## 7. VS Code 설정 요약 (settings.json)
-
-```json
-{
-  "cmake.configureOnOpen": true,
-  "cmake.buildDirectory": "${workspaceFolder}/build",
-  "cmake.generator": "Ninja",
-  "cmake.debugConfig": {
-    "type": "lldb",
-    "request": "launch",
-    "stopOnEntry": false,
-    "runInTerminal": true
-  },
-  "clangd.path": "/usr/bin/clangd",
-  "clangd.arguments": [
-    "--header-insertion=never",
-    "--clang-tidy"
-  ],
-  "C_Cpp.intelliSenseEngine": "Disabled",
-  "clangd.detectExtensionConflicts": false
-}
-```
-
----
-
 ## ✅ 요약
 
 | 항목 | 설명 |
