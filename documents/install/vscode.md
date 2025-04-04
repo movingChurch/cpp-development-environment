@@ -1,15 +1,15 @@
-# 🛠️ Visual Studio Code 설치 및 사용자 설정 가이드 (Modern C++ 개발용)
+# 🛠️ Visual Studio Code Installation and User Configuration Guide (For Modern C++ Development)
 
-이 문서는 Modern C++ 개발을 위한 Visual Studio Code(이하 VS Code) 설치 및 사용자 설정(user-level configuration)을 안내합니다. 특히 Clangd 기반 언어 지원과 CMake Tools, CodeLLDB 확장을 활용한 효율적인 개발 환경을 구축하는 데 중점을 둡니다.
+This document provides guidance on installing Visual Studio Code (VS Code) and configuring it for user-level settings, specifically for Modern C++ development. It focuses on building an efficient development environment using Clangd-based language support, CMake Tools, and CodeLLDB extensions.
 
 ---
 
-## 1. VS Code 설치
+## 1. Installing VS Code
 
 ### ✅ Windows
 
-1. [VS Code 공식 다운로드 페이지](https://code.visualstudio.com/)에서 Windows용 설치 파일(.exe) 다운로드
-2. 설치 중 다음 옵션을 반드시 선택:
+1. Download the Windows installer (.exe) from the [VS Code official download page](https://code.visualstudio.com/)
+2. Ensure the following options are selected during installation:
    - ✅ Add to PATH
    - ✅ Register Code as editor
    - ✅ Add "Open with Code" to Explorer context menu
@@ -20,7 +20,7 @@
 brew install --cask visual-studio-code
 ```
 
-또는 [공식 사이트](https://code.visualstudio.com/)에서 `.zip` 파일을 다운로드하고 `/Applications` 폴더로 이동
+Or download the `.zip` file from the [official site](https://code.visualstudio.com/) and move it to the `/Applications` folder
 
 ### ✅ Ubuntu / Linux
 
@@ -28,7 +28,7 @@ brew install --cask visual-studio-code
 sudo snap install --classic code
 ```
 
-또는 `.deb` 패키지 수동 설치:
+Or manually install the `.deb` package:
 
 ```bash
 wget https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64 -O vscode.deb
@@ -37,15 +37,15 @@ sudo apt install ./vscode.deb
 
 ---
 
-## 2. 필수 확장 프로그램 설치
+## 2. Installing Essential Extensions
 
-### 방법 A: VS Code 내 확장 탭에서 설치
+### Method A: Install from the Extensions Tab in VS Code
 
 - 🔍 `clangd` (by LLVM)
 - 🔍 `CMake Tools` (by Microsoft)
 - 🔍 `CodeLLDB` (by Vadim Chugunov)
 
-### 방법 B: 명령줄에서 설치
+### Method B: Install from the Command Line
 
 ```bash
 code --install-extension llvm-vs-code-extensions.vscode-clangd
@@ -53,18 +53,18 @@ code --install-extension ms-vscode.cmake-tools
 code --install-extension vadimcn.vscode-lldb
 ```
 
-> 💡 선택 확장 (권장):
+> 💡 Recommended Optional Extensions:
 >
 > - `CMake Language Support`
 > - `GitHub Pull Requests and Issues`
 
 ---
 
-## 3. 사용자 설정(user settings: user-level settings.json)
+## 3. User Settings (user-level settings.json)
 
-> ⚙️ VS Code의 사용자 설정은 `settings.json` 파일을 통해 구성됩니다. 아래 설정은 전역 설정(User Settings) 기준이며, `Ctrl + Shift + P` → `Preferences: Open Settings (JSON)` 명령으로 열 수 있습니다.
+> ⚙️ User settings in VS Code are configured via the `settings.json` file. The following settings are based on global settings (User Settings) and can be accessed via `Ctrl + Shift + P` → `Preferences: Open Settings (JSON)`.
 
-### 3.1 Clangd 관련 설정
+### 3.1 Clangd Related Settings
 
 ```json
 {
@@ -77,12 +77,12 @@ code --install-extension vadimcn.vscode-lldb
 }
 ```
 
-> ✅ MS C/C++ 확장의 IntelliSense 비활성화로 clangd와 충돌 방지
-> ✅ clangd 인자 설정으로 자동 완성 및 헤더 처리 개선
+> ✅ Disable IntelliSense in the MS C/C++ extension to prevent conflicts with clangd
+> ✅ Configure clangd arguments to improve auto-completion and header handling
 
 ---
 
-### 3.2 에디터 및 폰트 설정
+### 3.2 Editor and Font Settings
 
 ```json
 {
@@ -94,12 +94,12 @@ code --install-extension vadimcn.vscode-lldb
 }
 ```
 
-> ✅ 가독성이 좋은 개발용 폰트 사용
-> ✅ 저장 시 자동 포맷팅 및 자동 저장 설정
+> ✅ Use developer-friendly fonts for better readability
+> ✅ Enable auto-formatting on save and auto-save settings
 
 ---
 
-### 3.3 CMake Tools 관련 설정
+### 3.3 CMake Tools Related Settings
 
 ```json
 {
@@ -112,23 +112,23 @@ code --install-extension vadimcn.vscode-lldb
 }
 ```
 
-> ✅ compile_commands.json 자동 생성으로 clangd 연동 가능
-> ✅ Ninja 빌드 시스템 권장 (속도 빠름)
-> ✅ 빌드/소스 디렉토리 명시
+> ✅ Auto-generate compile_commands.json for clangd integration
+> ✅ Recommend using Ninja build system (faster)
+> ✅ Specify build/source directories
 
 ---
 
-## ✅ 요약: 설치 및 설정 핵심 정리
+## ✅ Summary: Key Installation and Configuration Points
 
-| 항목             | 설정 요약                                                                 |
-|------------------|----------------------------------------------------------------------------|
-| IDE              | Visual Studio Code                                                         |
-| 필수 확장        | clangd, CMake Tools, CodeLLDB                                              |
-| 언어 서버        | clangd (MS C++ IntelliSense는 비활성화)                                   |
-| 빌드 시스템      | CMake + Ninja (compile_commands.json 자동 생성)                           |
-| 디버깅           | CodeLLDB 사용, launch.json 없이 자동 디버깅 지원                          |
-| 사용자 설정 위치 | `Ctrl + Shift + P` → `Preferences: Open Settings (JSON)`                  |
-| 주요 설정 항목   | 폰트, 포맷팅, clangd 인자, CMake 설정 등                                 |
+| Item             | Summary                                                                 |
+|------------------|------------------------------------------------------------------------|
+| IDE              | Visual Studio Code                                                      |
+| Essential Extensions | clangd, CMake Tools, CodeLLDB                                         |
+| Language Server  | clangd (MS C++ IntelliSense disabled)                                   |
+| Build System     | CMake + Ninja (auto-generate compile_commands.json)                     |
+| Debugging        | Use CodeLLDB, supports automatic debugging without launch.json          |
+| User Settings Location | `Ctrl + Shift + P` → `Preferences: Open Settings (JSON)`                  |
+| Key Settings Items   | Fonts, formatting, clangd arguments, CMake settings, etc.                                 |
 
 ---
-> 📁 참고: `.vscode/` 폴더 내 `settings.json`은 워크스페이스 전용 설정입니다. 본 문서는 Global(User) 설정 기준입니다.
+> 📁 Note: The `settings.json` file within the `.vscode/` folder is for workspace-specific settings. This document is based on Global (User) settings.

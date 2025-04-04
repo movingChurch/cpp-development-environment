@@ -1,45 +1,44 @@
-# ✍️ 코딩 폰트 설치 및 설정 가이드
+# ✍️ Coding Font Installation and Setup Guide
 
-코딩 폰트는 개발자의 생산성과 가독성에 직접적인 영향을 미칩니다.
-이 문서에서는 Modern C++ 개발에 적합한 코딩 폰트를 선택하고, 운영체제별 설치 방법 및 VS Code에서의 설정 방법을 안내합니다.
+Coding fonts directly impact a developer's productivity and readability. This document guides you in selecting a suitable coding font for Modern C++ development, and provides installation methods for different operating systems and setup instructions for VS Code.
 
 ---
 
-## 1. 코딩 폰트 선택 기준
+## 1. Criteria for Selecting a Coding Font
 
-| 기준 | 설명 |
+| Criteria | Description |
 |------|------|
-| 가독성 | 글자 간격, 크기, 줄 간격 등이 눈에 잘 들어와야 함 |
-| Ligature 지원 | `=>`, `==`, `!=` 등 기호 조합을 시각적으로 개선 |
-| 한글 지원 여부 | 한글/영문 혼용 시 균형 잡힌 출력 |
-| 라이선스 | 오픈소스 여부 (상업적 사용 가능 여부 포함) |
+| Readability | Should have clear spacing, size, and line spacing |
+| Ligature Support | Visually improves symbol combinations like `=>`, `==`, `!=` |
+| Korean Support | Balanced output when mixing Korean/English |
+| License | Open source (including commercial use) |
 
 ---
 
-## 2. 추천 코딩 폰트
+## 2. Recommended Coding Fonts
 
-| 폰트 이름 | 특징 |
+| Font Name | Features |
 |-----------|------|
-| Fira Code | Ligature 지원, 오픈소스, 널리 사용됨 |
-| JetBrains Mono | JetBrains IDE 최적화, 가독성 우수 |
-| Source Code Pro | Adobe 제작, 깔끔한 디자인 |
-| Cascadia Code | Microsoft 제작, Windows Terminal 기본 폰트 |
+| Fira Code | Supports ligatures, open source, widely used |
+| JetBrains Mono | Optimized for JetBrains IDE, excellent readability |
+| Source Code Pro | Created by Adobe, clean design |
+| Cascadia Code | Created by Microsoft, default font for Windows Terminal |
 
-> 💡 이 가이드에서는 Fira Code를 기준으로 설치 및 설정을 설명합니다.
+> 💡 This guide uses Fira Code as the basis for installation and setup.
 
 ---
 
-## 3. Fira Code 설치 방법
+## 3. Fira Code Installation Methods
 
 ### 3.1 Windows
 
-#### 방법 1: 수동 설치
+#### Method 1: Manual Installation
 
-1. [Fira Code GitHub Releases](https://github.com/tonsky/FiraCode/releases)에서 `.zip` 파일 다운로드
-2. 압축 해제 후 `.ttf` 파일을 모두 선택
-3. 마우스 우클릭 → "설치" 또는 "모든 사용자에게 설치"
+1. Download the `.zip` file from [Fira Code GitHub Releases](https://github.com/tonsky/FiraCode/releases)
+2. Extract and select all `.ttf` files
+3. Right-click → "Install" or "Install for all users"
 
-#### 방법 2: Windows Package Manager 사용
+#### Method 2: Using Windows Package Manager
 
 ```powershell
 winget install --id=FiraCode.FiraCode -e
@@ -49,30 +48,30 @@ winget install --id=FiraCode.FiraCode -e
 
 ### 3.2 macOS
 
-#### 방법 1: Homebrew 사용 (권장)
+#### Method 1: Using Homebrew (Recommended)
 
 ```bash
 brew tap homebrew/cask-fonts
 brew install --cask font-fira-code
 ```
 
-#### 방법 2: 수동 설치
+#### Method 2: Manual Installation
 
-1. GitHub에서 `.zip` 파일 다운로드 및 압축 해제
-2. `.ttf` 파일을 더블 클릭하여 Font Book에서 설치
+1. Download and extract the `.zip` file from GitHub
+2. Double-click `.ttf` files to install via Font Book
 
 ---
 
-### 3.3 Linux (Ubuntu 예시)
+### 3.3 Linux (Ubuntu Example)
 
-#### 방법 1: apt 패키지 사용
+#### Method 1: Using apt Package
 
 ```bash
 sudo apt update
 sudo apt install fonts-firacode
 ```
 
-#### 방법 2: 수동 설치
+#### Method 2: Manual Installation
 
 ```bash
 mkdir -p ~/.local/share/fonts
@@ -84,11 +83,11 @@ fc-cache -f -v
 
 ---
 
-## 4. 설치 확인
+## 4. Verification of Installation
 
 ### Windows/macOS
 
-- 제어판 > 글꼴 또는 Font Book 앱에서 "Fira Code" 확인
+- Check "Fira Code" in Control Panel > Fonts or Font Book app
 
 ### Linux
 
@@ -98,9 +97,9 @@ fc-list | grep "Fira Code"
 
 ---
 
-## 5. VS Code에서 폰트 설정
+## 5. Font Setup in VS Code
 
-### 5.1 settings.json 설정 예시
+### 5.1 Example settings.json Configuration
 
 ```json
 {
@@ -111,24 +110,24 @@ fc-list | grep "Fira Code"
 }
 ```
 
-### 5.2 설정 방법
+### 5.2 Setup Instructions
 
-1. VS Code → Preferences → Settings (`Ctrl + ,` 또는 `Cmd + ,`)
-2. 검색창에 `font` 입력
-3. `"Font Family"`에 `Fira Code` 입력
-4. `"Font Ligatures"` 항목 체크 또는 `true` 값 설정
+1. VS Code → Preferences → Settings (`Ctrl + ,` or `Cmd + ,`)
+2. Enter `font` in the search box
+3. Enter `Fira Code` in "Font Family"
+4. Check or set `true` for "Font Ligatures"
 
 ---
 
-## 6. 기타 추천 폰트 설치
+## 6. Installation of Other Recommended Fonts
 
-### JetBrains Mono (macOS 예시)
+### JetBrains Mono (macOS Example)
 
 ```bash
 brew install --cask font-jetbrains-mono
 ```
 
-### Source Code Pro (Ubuntu 예시)
+### Source Code Pro (Ubuntu Example)
 
 ```bash
 sudo apt install fonts-source-code-pro
@@ -136,11 +135,11 @@ sudo apt install fonts-source-code-pro
 
 ---
 
-## ✅ 요약
+## ✅ Summary
 
-| 항목 | 설명 |
+| Item | Description |
 |------|------|
-| 추천 폰트 | Fira Code, JetBrains Mono, Source Code Pro |
-| 핵심 기능 | Ligature, 가독성, 한글 지원 |
-| 설치 방법 | 운영체제별 패키지 매니저 또는 수동 설치 |
-| VS Code 설정 | `"fontFamily"` 및 `"fontLigatures"` 설정 필요 |
+| Recommended Fonts | Fira Code, JetBrains Mono, Source Code Pro |
+| Key Features | Ligature, readability, Korean support |
+| Installation Method | Package manager or manual installation by OS |
+| VS Code Setup | Requires setting "fontFamily" and "fontLigatures" |

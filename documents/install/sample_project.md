@@ -1,24 +1,24 @@
-# 🧪 샘플 C++ 프로젝트 구성 및 빌드 가이드
+# 🧪 Sample C++ Project Setup and Build Guide
 
-(CMake + Clang + clangd + LLDB 기반)
+(Based on CMake + Clang + clangd + LLDB)
 
-이 문서는 Modern C++ 개발환경에서 CMake를 사용하여 간단한 C++ 프로젝트를 구성하고, Clang으로 빌드하며, clangd와 LLDB를 통해 코드 분석 및 디버깅하는 전체 과정을 안내합니다.
+This document guides you through setting up a simple C++ project using CMake in a Modern C++ development environment, building it with Clang, and using clangd and LLDB for code analysis and debugging.
 
 ---
 
-## 1. 프로젝트 구조
+## 1. Project Structure
 
 ```plaintext
 my_project/
 ├── CMakeLists.txt
 ├── src/
 │   └── main.cpp
-└── build/         ← CMake 빌드 디렉토리 (자동 생성)
+└── build/         ← CMake build directory (auto-generated)
 ```
 
 ---
 
-## 2. CMakeLists.txt 예시
+## 2. Example CMakeLists.txt
 
 ```cmake
 cmake_minimum_required(VERSION 3.20)
@@ -31,11 +31,11 @@ set(CMAKE_BUILD_TYPE Debug)
 add_executable(hello_world src/main.cpp)
 ```
 
-> ✅ `CMAKE_BUILD_TYPE`을 `Debug`로 설정하여 디버깅 심볼을 포함시킵니다.
+> ✅ Set `CMAKE_BUILD_TYPE` to `Debug` to include debugging symbols.
 
 ---
 
-## 3. main.cpp 예시
+## 3. Example main.cpp
 
 ```cpp
 #include <iostream>
@@ -50,9 +50,9 @@ int main() {
 
 ---
 
-## 4. 빌드 및 실행
+## 4. Build and Run
 
-### 4.1 CMake 빌드 명령어
+### 4.1 CMake Build Commands
 
 ```bash
 mkdir -p build
@@ -61,13 +61,13 @@ cmake ..
 cmake --build .
 ```
 
-### 4.2 실행
+### 4.2 Run
 
 ```bash
 ./hello_world
 ```
 
-출력 예시:
+Example output:
 
 ``` bash
 Hello, Modern C++! y = 84
@@ -75,17 +75,17 @@ Hello, Modern C++! y = 84
 
 ---
 
-## 5. clangd를 위한 설정
+## 5. Configuration for clangd
 
-### 5.1 compile_commands.json 자동 생성
+### 5.1 Auto-generate compile_commands.json
 
-`CMakeLists.txt` 또는 CMake 명령어에 다음 옵션 추가:
+Add the following option to `CMakeLists.txt` or CMake command:
 
 ```bash
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
 ```
 
-또는 `CMake Tools` 확장에서 자동으로 생성되도록 설정:
+Or configure to auto-generate in the `CMake Tools` extension:
 
 ```json
 "cmake.configureSettings": {
@@ -93,35 +93,35 @@ cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
 }
 ```
 
-### 5.2 심볼 인식 확인
+### 5.2 Verify Symbol Recognition
 
-- VS Code에서 clangd가 코드 분석, 자동 완성, 오류 표시 등을 정상적으로 수행하는지 확인
-- `.vscode/c_cpp_properties.json` 없이도 동작
-
----
-
-## 6. 디버깅 (LLDB + CodeLLDB)
-
-### 6.1 디버깅 준비
-
-- 빌드 시 `Debug` 모드 설정 (`CMAKE_BUILD_TYPE=Debug`)
-- `build/hello_world` 실행 파일이 디버깅 심볼을 포함해야 함
-
-### 6.2 디버깅 실행 (CMake Tools 사용)
-
-1. Command Palette 열기 (`Ctrl+Shift+P` 또는 `Cmd+Shift+P`)
-2. `CMake: Debug` 실행
-3. LLDB 기반 디버깅 세션 자동 시작
+- Ensure clangd performs code analysis, auto-completion, error display, etc., correctly in VS Code
+- Operates without `.vscode/c_cpp_properties.json`
 
 ---
 
-## ✅ 요약
+## 6. Debugging (LLDB + CodeLLDB)
 
-| 항목 | 설명 |
+### 6.1 Prepare for Debugging
+
+- Set `Debug` mode during build (`CMAKE_BUILD_TYPE=Debug`)
+- The `build/hello_world` executable must include debugging symbols
+
+### 6.2 Run Debugging (Using CMake Tools)
+
+1. Open Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`)
+2. Execute `CMake: Debug`
+3. LLDB-based debugging session starts automatically
+
+---
+
+## ✅ Summary
+
+| Item | Description |
 |------|------|
-| 빌드 시스템 | CMake |
-| 컴파일러 | Clang |
-| 언어 서버 | clangd |
-| 디버거 | LLDB (CodeLLDB 확장 사용) |
-| 빌드 구성 | Debug 모드, `compile_commands.json` 자동 생성 |
-| 디버깅 실행 | `CMake: Debug` 명령으로 launch.json 없이 실행 가능 |
+| Build System | CMake |
+| Compiler | Clang |
+| Language Server | clangd |
+| Debugger | LLDB (using CodeLLDB extension) |
+| Build Configuration | Debug mode, auto-generate `compile_commands.json` |
+| Debugging Execution | Executable via `CMake: Debug` command without launch.json |

@@ -1,67 +1,66 @@
-# 🧱 Clang 설치 가이드
+# 🧱 Clang Installation Guide
 
-Clang은 LLVM 프로젝트의 일부로, 최신 C++ 표준(C++17/20/23 등)을 지원하는 고성능 C/C++ 컴파일러입니다.
-Modern C++ 개발을 위해 Clang은 GCC보다 더 빠른 빌드 시간과 뛰어난 진단 메시지를 제공합니다.
+Clang is a high-performance C/C++ compiler that is part of the LLVM project, supporting the latest C++ standards (C++17/20/23, etc.). For Modern C++ development, Clang offers faster build times and excellent diagnostic messages compared to GCC.
 
-> ✅ 이 문서는 Windows, macOS, Linux(Ubuntu) 기반 환경에서 Clang 설치 방법을 안내합니다.
-
----
-
-## 📌 설치 전 요구사항
-
-- 관리자 권한 또는 sudo 권한
-- 인터넷 연결
-- 기본적인 터미널/명령 프롬프트 사용 능력
+> ✅ This document guides you through the installation of Clang on Windows, macOS, and Linux (Ubuntu) environments.
 
 ---
 
-## 🪟 Windows에서 Clang 설치
+## 📌 Prerequisites Before Installation
 
-### 방법 1: LLVM 공식 설치 프로그램 사용
+- Administrator or sudo privileges
+- Internet connection
+- Basic terminal/command prompt usage skills
 
-1. [LLVM 공식 다운로드 페이지](https://releases.llvm.org/download.html) 접속
-2. Windows 용 인스톨러 (`LLVM-x.y.z-win64.exe`) 다운로드
-3. 설치 시 다음 옵션 활성화:
+---
+
+## 🪟 Installing Clang on Windows
+
+### Method 1: Using the Official LLVM Installer
+
+1. Visit the [LLVM official download page](https://releases.llvm.org/download.html)
+2. Download the installer for Windows (`LLVM-x.y.z-win64.exe`)
+3. During installation, enable the following options:
    - Add LLVM to the system PATH
    - Install Clang tools
 
-4. 설치 후 `cmd` 또는 `PowerShell` 열고 다음 명령어로 확인:
+4. After installation, open `cmd` or `PowerShell` and verify with the following command:
 
 ```bash
 clang --version
 ```
 
-### 방법 2: Chocolatey 사용 (권장)
+### Method 2: Using Chocolatey (Recommended)
 
 ```powershell
 choco install llvm -y
 ```
 
-> 참고: Chocolatey가 설치되어 있어야 합니다. [https://chocolatey.org/install](https://chocolatey.org/install)
+> Note: Chocolatey must be installed. [https://chocolatey.org/install](https://chocolatey.org/install)
 
 ---
 
-## 🍎 macOS에서 Clang 설치
+## 🍎 Installing Clang on macOS
 
-### 방법 1: Xcode Command Line Tools 사용 (권장)
+### Method 1: Using Xcode Command Line Tools (Recommended)
 
 ```bash
 xcode-select --install
 ```
 
-- 설치 완료 후 확인:
+- Verify after installation:
 
 ```bash
 clang --version
 ```
 
-### 방법 2: Homebrew 사용
+### Method 2: Using Homebrew
 
 ```bash
 brew install llvm
 ```
 
-- 설치 후 LLVM 바이너리를 PATH에 추가 (예: `~/.zshrc` 또는 `~/.bash_profile`)
+- Add LLVM binaries to PATH after installation (e.g., `~/.zshrc` or `~/.bash_profile`)
 
 ```bash
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
@@ -69,25 +68,25 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 ---
 
-## 🐧 Ubuntu/Linux에서 Clang 설치
+## 🐧 Installing Clang on Ubuntu/Linux
 
-### 방법 1: apt 패키지 사용
+### Method 1: Using apt Package
 
 ```bash
 sudo apt update
 sudo apt install clang
 ```
 
-- 최신 버전이 필요할 경우 LLVM 공식 리포지토리 추가:
+- For the latest version, add the official LLVM repository:
 
 ```bash
-# 예: Clang 16 설치
+# Example: Installing Clang 16
 wget https://apt.llvm.org/llvm.sh
 chmod +x llvm.sh
 sudo ./llvm.sh 16
 ```
 
-- 설치 확인:
+- Verify installation:
 
 ```bash
 clang++ --version
@@ -95,16 +94,16 @@ clang++ --version
 
 ---
 
-## ✅ 설치 확인
+## ✅ Verification of Installation
 
-다음 명령어로 Clang이 정상 설치되었는지 확인할 수 있습니다:
+You can verify that Clang is installed correctly with the following commands:
 
 ```bash
 clang --version
 clang++ --version
 ```
 
-출력 예시:
+Example output:
 
 ```bash
 clang version 16.0.6 (https://github.com/llvm/llvm-project.git ...)
@@ -114,21 +113,21 @@ Thread model: posix
 
 ---
 
-## ⚙️ 추가 설정 (선택 사항)
+## ⚙️ Additional Configuration (Optional)
 
-- **C++ 표준 지정**: 기본적으로 `-std=c++20` 등의 플래그로 표준을 지정합니다.
+- **Specify C++ Standard**: By default, specify the standard with flags like `-std=c++20`.
 
 ```bash
 clang++ -std=c++20 -o main main.cpp
 ```
 
-- **디버깅 심볼 포함**:
+- **Include Debugging Symbols**:
 
 ```bash
 clang++ -g -O0 -std=c++20 -o main main.cpp
 ```
 
-- **CMake와 함께 사용**: CMakeLists.txt에서 Clang을 명시하려면 다음과 같이 설정합니다:
+- **Using with CMake**: To specify Clang in CMakeLists.txt, configure as follows:
 
 ```cmake
 set(CMAKE_C_COMPILER clang)
@@ -137,20 +136,20 @@ set(CMAKE_CXX_COMPILER clang++)
 
 ---
 
-## 🔗 참고 링크
+## 🔗 Reference Links
 
-- LLVM 공식 홈페이지: <https://llvm.org>
-- Clang 문서: <https://clang.llvm.org/docs/index.html>
-- CMake와 Clang 연동: <https://cmake.org/cmake/help/latest/variable/CMAKE_CXX_COMPILER.html>
+- LLVM Official Website: <https://llvm.org>
+- Clang Documentation: <https://clang.llvm.org/docs/index.html>
+- CMake and Clang Integration: <https://cmake.org/cmake/help/latest/variable/CMAKE_CXX_COMPILER.html>
 
 ---
 
-## 📌 요약
+## 📌 Summary
 
-| 항목 | 설명 |
-|------|------|
-| 설치 대상 | Clang (C/C++ 컴파일러) |
-| 지원 OS | Windows, macOS, Ubuntu/Linux |
-| 설치 방법 | 패키지 매니저 또는 공식 설치 프로그램 |
-| 확인 방법 | `clang --version` |
-| 추가 설정 | C++20 이상, 디버깅 심볼, CMake 연동 등 |
+| Item | Description |
+|------|-------------|
+| Target | Clang (C/C++ Compiler) |
+| Supported OS | Windows, macOS, Ubuntu/Linux |
+| Installation Method | Package manager or official installer |
+| Verification Method | `clang --version` |
+| Additional Configuration | C++20 or higher, debugging symbols, CMake integration, etc. |

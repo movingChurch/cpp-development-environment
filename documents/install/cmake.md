@@ -1,56 +1,56 @@
-# 🏗️ CMake 설치 가이드
+# 🏗️ CMake Installation Guide
 
-CMake는 플랫폼 독립적인 C/C++ 빌드 시스템으로, Modern C++ 프로젝트에서 Clang, GCC, MSVC 등 다양한 컴파일러와 함께 사용됩니다. 이 문서는 운영체제별 CMake 설치 방법과 기본 설정을 안내합니다.
-
----
-
-## 📌 설치 전 요구사항
-
-- 관리자 권한 (sudo 또는 관리자 계정)
-- 인터넷 연결
-- 기본적인 터미널 또는 명령 프롬프트 사용 능력
+CMake is a platform-independent C/C++ build system used with various compilers like Clang, GCC, and MSVC in Modern C++ projects. This document provides installation methods and basic configuration for CMake across different operating systems.
 
 ---
 
-## 🪟 Windows에서 CMake 설치
+## 📌 Prerequisites Before Installation
 
-### 방법 1: 공식 설치 프로그램 사용 (권장)
+- Administrator privileges (sudo or admin account)
+- Internet connection
+- Basic terminal or command prompt usage skills
 
-1. [CMake 공식 다운로드 페이지](https://cmake.org/download/) 방문
-2. Windows용 설치 파일 (`.msi`) 다운로드
-3. 설치 중 다음 옵션 선택:
+---
+
+## 🪟 Installing CMake on Windows
+
+### Method 1: Using the Official Installer (Recommended)
+
+1. Visit the [CMake official download page](https://cmake.org/download/)
+2. Download the installer for Windows (`.msi`)
+3. During installation, select the following option:
    - ✅ Add CMake to the system PATH for all users
 
-4. 설치 후 명령줄(cmd 또는 PowerShell)에서 확인:
+4. Verify installation in the command line (cmd or PowerShell):
 
 ```bash
 cmake --version
 ```
 
-### 방법 2: Chocolatey 사용
+### Method 2: Using Chocolatey
 
 ```powershell
 choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System' -y
 ```
 
-> Chocolatey 설치 필요: [https://chocolatey.org/install](https://chocolatey.org/install)
+> Chocolatey must be installed: [https://chocolatey.org/install](https://chocolatey.org/install)
 
 ---
 
-## 🍎 macOS에서 CMake 설치
+## 🍎 Installing CMake on macOS
 
-### 방법 1: Homebrew 사용 (권장)
+### Method 1: Using Homebrew (Recommended)
 
 ```bash
 brew install cmake
 ```
 
-### 방법 2: 공식 설치 프로그램 사용
+### Method 2: Using the Official Installer
 
-1. [CMake 다운로드 페이지](https://cmake.org/download/)에서 `.dmg` 파일 다운로드
-2. 설치 후 `/Applications/CMake.app` 실행
-3. 메뉴에서 “Tools > How to Install For Command Line Use” 클릭
-4. 안내에 따라 심볼릭 링크 생성:
+1. Download the `.dmg` file from the [CMake download page](https://cmake.org/download/)
+2. After installation, run `/Applications/CMake.app`
+3. Click "Tools > How to Install For Command Line Use" in the menu
+4. Follow the instructions to create a symbolic link:
 
 ```bash
 sudo "/Applications/CMake.app/Contents/bin/cmake-gui" --install
@@ -58,18 +58,18 @@ sudo "/Applications/CMake.app/Contents/bin/cmake-gui" --install
 
 ---
 
-## 🐧 Ubuntu/Linux에서 CMake 설치
+## 🐧 Installing CMake on Ubuntu/Linux
 
-### 방법 1: apt 패키지 사용 (기본 버전)
+### Method 1: Using apt Package (Default Version)
 
 ```bash
 sudo apt update
 sudo apt install cmake
 ```
 
-> 기본 apt 저장소는 구버전일 수 있습니다.
+> The default apt repository may have an older version.
 
-### 방법 2: Kitware 공식 PPA 사용 (최신 버전 설치 권장)
+### Method 2: Using Kitware Official PPA (Recommended for Latest Version)
 
 ```bash
 sudo apt update
@@ -80,9 +80,9 @@ sudo apt update
 sudo apt install cmake
 ```
 
-> Ubuntu 20.04 기준. 다른 버전은 [Kitware APT 문서](https://apt.kitware.com/) 참고
+> Based on Ubuntu 20.04. Refer to [Kitware APT documentation](https://apt.kitware.com/) for other versions.
 
-### 방법 3: 소스 코드 빌드 (대안)
+### Method 3: Building from Source (Alternative)
 
 ```bash
 wget https://github.com/Kitware/CMake/releases/download/v3.27.0/cmake-3.27.0.tar.gz
@@ -95,15 +95,15 @@ sudo make install
 
 ---
 
-## ✅ 설치 확인
+## ✅ Verification of Installation
 
-설치 후 다음 명령으로 확인합니다:
+Verify installation with the following command:
 
 ```bash
 cmake --version
 ```
 
-예시 출력:
+Example output:
 
 ```bash
 cmake version 3.27.0
@@ -113,9 +113,9 @@ CMake suite maintained and supported by Kitware (kitware.com/cmake)
 
 ---
 
-## ⚙️ 기본 사용 예시
+## ⚙️ Basic Usage Example
 
-### 1. 디렉토리 구성
+### 1. Directory Structure
 
 ```plaintext
 my_project/
@@ -124,7 +124,7 @@ my_project/
     └── main.cpp
 ```
 
-### 2. CMakeLists.txt 예시
+### 2. Example CMakeLists.txt
 
 ```cmake
 cmake_minimum_required(VERSION 3.20)
@@ -134,7 +134,7 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(MyApp src/main.cpp)
 ```
 
-### 3. 빌드 명령어
+### 3. Build Commands
 
 ```bash
 cmake -S . -B build
@@ -143,21 +143,21 @@ cmake --build build
 
 ---
 
-## 🔗 참고 링크
+## 🔗 Reference Links
 
-- CMake 공식 홈페이지: <https://cmake.org>
-- Kitware APT 저장소 안내: <https://apt.kitware.com>
-- CMake 문서: <https://cmake.org/cmake/help/latest/>
-- GitHub 저장소: <https://github.com/Kitware/CMake>
+- CMake Official Website: <https://cmake.org>
+- Kitware APT Repository Guide: <https://apt.kitware.com>
+- CMake Documentation: <https://cmake.org/cmake/help/latest/>
+- GitHub Repository: <https://github.com/Kitware/CMake>
 
 ---
 
-## 📌 요약
+## 📌 Summary
 
-| 항목         | 설명                                      |
-|--------------|-------------------------------------------|
-| 설치 대상    | CMake (C++ 빌드 시스템)                   |
-| 지원 OS      | Windows, macOS, Ubuntu/Linux              |
-| 설치 방법    | 공식 설치 프로그램, 패키지 매니저, 소스 빌드 |
-| 확인 방법    | `cmake --version`                         |
-| 주요 기능    | 플랫폼 독립 빌드, Clang/GCC/MSVC 지원     |
+| Item         | Description                                      |
+|--------------|--------------------------------------------------|
+| Target       | CMake (C++ Build System)                         |
+| Supported OS | Windows, macOS, Ubuntu/Linux                     |
+| Installation Method | Official installer, package manager, source build |
+| Verification Method | `cmake --version`                         |
+| Key Features | Platform-independent build, supports Clang/GCC/MSVC |

@@ -1,15 +1,14 @@
-# 🧭 GitHub CLI 설치 및 설정 가이드
+# 🧭 GitHub CLI Installation and Setup Guide
 
-GitHub CLI(`gh`)는 GitHub에서 제공하는 공식 명령줄 도구로, 터미널에서 직접 리포지토리 관리, 이슈 생성, PR 제출 등을 수행할 수 있습니다.
-이 문서는 GitHub CLI의 설치 방법과 기본적인 사용법을 안내합니다.
+GitHub CLI (`gh`) is an official command-line tool provided by GitHub, allowing you to manage repositories, create issues, submit PRs, and more directly from the terminal. This document provides installation methods and basic usage instructions for GitHub CLI.
 
 ---
 
-## 1. GitHub CLI 설치
+## 1. Installing GitHub CLI
 
-### 1.1 운영체제별 설치
+### 1.1 Installation by Operating System
 
-#### 🐧 Linux (Ubuntu 예시)
+#### 🐧 Linux (Ubuntu Example)
 
 ```bash
 type -p curl >/dev/null || sudo apt install curl -y
@@ -27,7 +26,7 @@ sudo apt update
 sudo apt install gh
 ```
 
-#### 🍎 macOS (Homebrew 사용)
+#### 🍎 macOS (Using Homebrew)
 
 ```bash
 brew install gh
@@ -35,27 +34,27 @@ brew install gh
 
 #### 🪟 Windows
 
-##### 방법 1: Winget 사용
+##### Method 1: Using Winget
 
 ```powershell
 winget install GitHub.cli
 ```
 
-##### 방법 2: 수동 설치
+##### Method 2: Manual Installation
 
-- [GitHub CLI Releases](https://github.com/cli/cli/releases) 페이지에서 `.msi` 설치 파일 다운로드 후 실행
+- Download and run the `.msi` installer from the [GitHub CLI Releases](https://github.com/cli/cli/releases) page
 
 ---
 
-## 2. 설치 확인
+## 2. Verification of Installation
 
-설치가 완료되면 다음 명령어로 버전을 확인합니다:
+After installation, verify the version with the following command:
 
 ```bash
 gh --version
 ```
 
-출력 예시:
+Example output:
 
 ```bash
 gh version 2.39.1 (2024-01-10)
@@ -64,39 +63,38 @@ https://github.com/cli/cli/releases/latest
 
 ---
 
-## 3. GitHub 계정 로그인
+## 3. Logging into GitHub Account
 
 ```bash
 gh auth login
 ```
 
-### 로그인 방식 선택
+### Choosing Login Method
 
-- GitHub.com or GitHub Enterprise 선택
-- 인증 방식 선택: HTTPS 또는 SSH
-- 웹 브라우저를 통해 로그인하거나 토큰 입력 방식 제공
+- Select GitHub.com or GitHub Enterprise
+- Choose authentication method: HTTPS or SSH
+- Options to log in via web browser or enter a token
 
-> 💡 SSH 키를 미리 생성하고 등록해두면 SSH 방식으로 인증하는 것이 편리합니다.
-> SSH 키 생성 방법은 [git.md](./git.md) 문서를 참고하세요.
+> 💡 It's convenient to authenticate using SSH if you have pre-generated and registered SSH keys. Refer to the [git.md](./git.md) document for SSH key generation.
 
 ---
 
-## 4. 주요 명령어 정리
+## 4. Summary of Key Commands
 
-| 명령어 | 설명 |
+| Command | Description |
 |--------|------|
-| `gh auth login` | GitHub 계정 로그인 |
-| `gh repo clone <user>/<repo>` | 리포지토리 클론 |
-| `gh repo create` | 새 리포지토리 생성 |
-| `gh pr create` | Pull Request 생성 |
-| `gh pr checkout <number>` | PR 브랜치로 전환 |
-| `gh issue create` | 이슈 생성 |
-| `gh issue list` | 이슈 목록 조회 |
-| `gh gist create` | Gist 생성 |
+| `gh auth login` | Log into GitHub account |
+| `gh repo clone <user>/<repo>` | Clone a repository |
+| `gh repo create` | Create a new repository |
+| `gh pr create` | Create a Pull Request |
+| `gh pr checkout <number>` | Switch to a PR branch |
+| `gh issue create` | Create an issue |
+| `gh issue list` | List issues |
+| `gh gist create` | Create a Gist |
 
 ---
 
-## 5. 자동완성 설정 (선택 사항)
+## 5. Setting Up Autocompletion (Optional)
 
 ### Bash
 
@@ -116,20 +114,20 @@ source ~/.zshrc
 
 ---
 
-## 6. VS Code와 연동 (선택 사항)
+## 6. Integration with VS Code (Optional)
 
-- VS Code에서 GitHub CLI를 활용한 PR, 이슈, 커밋 브라우징 기능을 사용할 수 있습니다.
-- GitHub Pull Requests and Issues 확장 설치 권장:
+- Use GitHub CLI in VS Code for PR, issue, and commit browsing.
+- Recommended to install the GitHub Pull Requests and Issues extension:
   <https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github>
 
 ---
 
-## ✅ 요약
+## ✅ Summary
 
-| 항목 | 설명 |
+| Item | Description |
 |------|------|
-| 설치 대상 | GitHub CLI (`gh`) |
-| 지원 OS | Windows, macOS, Ubuntu/Linux |
-| 인증 방식 | HTTPS 또는 SSH |
-| 주요 기능 | repo 관리, PR 생성, 이슈 등록, gist 작성 등 |
-| 권장 연동 | VS Code, SSH 키 인증 |
+| Target | GitHub CLI (`gh`) |
+| Supported OS | Windows, macOS, Ubuntu/Linux |
+| Authentication Method | HTTPS or SSH |
+| Key Features | Repo management, PR creation, issue registration, gist creation, etc. |
+| Recommended Integration | VS Code, SSH key authentication |
